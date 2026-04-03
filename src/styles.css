@@ -1,0 +1,324 @@
+/* Doodle Dreams - Kids Illustration Generator */
+/* A playful, storybook-inspired design */
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Patrick+Hand&display=swap');
+
+:root {
+  /* Crayon-inspired color palette */
+  --cream: #FFF8F0;
+  --charcoal: #2D3436;
+  --coral: #FF6B6B;
+  --sunny: #FFE66D;
+  --sky: #4ECDC4;
+  --mint: #95E1D3;
+  --lavender: #DDA0DD;
+}
+
+/* Base styles */
+body {
+  font-family: 'Patrick Hand', cursive;
+  background-color: var(--cream);
+  color: var(--charcoal);
+}
+
+/* Utility classes for colors */
+.bg-cream { background-color: var(--cream); }
+.bg-charcoal { background-color: var(--charcoal); }
+.bg-coral { background-color: var(--coral); }
+.bg-sunny { background-color: var(--sunny); }
+.bg-sky { background-color: var(--sky); }
+.bg-mint { background-color: var(--mint); }
+.bg-lavender { background-color: var(--lavender); }
+
+.text-cream { color: var(--cream); }
+.text-charcoal { color: var(--charcoal); }
+.text-coral { color: var(--coral); }
+.text-sunny { color: var(--sunny); }
+.text-sky { color: var(--sky); }
+.text-mint { color: var(--mint); }
+
+.border-coral { border-color: var(--coral); }
+.border-sky { border-color: var(--sky); }
+
+/* Typography */
+.font-display {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 600;
+}
+
+.font-hand {
+  font-family: 'Patrick Hand', cursive;
+}
+
+/* Blob shape */
+.rounded-blob {
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+}
+
+/* Paper card effect */
+.paper-card {
+  background: white;
+  border: 3px solid var(--charcoal);
+  border-radius: 1rem;
+  box-shadow:
+    6px 6px 0 var(--charcoal),
+    inset 0 0 40px rgba(0,0,0,0.02);
+  position: relative;
+}
+
+.paper-card::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 20px;
+  width: 40px;
+  height: 16px;
+  background: var(--sunny);
+  border: 2px solid var(--charcoal);
+  border-radius: 2px;
+  transform: rotate(-2deg);
+}
+
+/* Scrapbook frame effect */
+.scrapbook-frame {
+  position: relative;
+  padding: 12px;
+  background: white;
+  border: 3px solid var(--charcoal);
+  border-radius: 8px;
+  box-shadow: 4px 4px 0 var(--charcoal);
+}
+
+.scrapbook-frame::before,
+.scrapbook-frame::after {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 12px;
+  background: var(--sunny);
+  border: 2px solid var(--charcoal);
+  border-radius: 2px;
+}
+
+.scrapbook-frame::before {
+  top: -6px;
+  left: 15%;
+  transform: rotate(-3deg);
+}
+
+.scrapbook-frame::after {
+  top: -6px;
+  right: 15%;
+  transform: rotate(3deg);
+}
+
+/* Crayon-style input */
+.crayon-input {
+  width: 100%;
+  padding: 12px 16px;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.125rem;
+  background: var(--cream);
+  border: 3px solid var(--charcoal);
+  border-radius: 12px;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.crayon-input:focus {
+  border-color: var(--sky);
+  box-shadow: 4px 4px 0 var(--sky);
+}
+
+.crayon-input::placeholder {
+  color: var(--charcoal);
+  opacity: 0.4;
+}
+
+/* Crayon-style button */
+.crayon-button {
+  padding: 14px 28px;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 600;
+  font-size: 1.125rem;
+  border: 3px solid var(--charcoal);
+  border-radius: 12px;
+  box-shadow: 4px 4px 0 var(--charcoal);
+  transition: all 0.15s;
+  cursor: pointer;
+}
+
+.crayon-button:hover:not(:disabled) {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--charcoal);
+}
+
+.crayon-button:active:not(:disabled) {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--charcoal);
+}
+
+.crayon-button-small {
+  padding: 8px 16px;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 500;
+  font-size: 0.875rem;
+  border: 2px solid var(--charcoal);
+  border-radius: 8px;
+  box-shadow: 3px 3px 0 var(--charcoal);
+  transition: all 0.15s;
+  cursor: pointer;
+}
+
+.crayon-button-small:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--charcoal);
+}
+
+/* Suggestion chips */
+.suggestion-chip {
+  padding: 6px 14px;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 0.9rem;
+  background: var(--cream);
+  border: 2px dashed var(--charcoal);
+  border-radius: 999px;
+  opacity: 0.7;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.suggestion-chip:hover:not(:disabled) {
+  opacity: 1;
+  background: var(--sunny);
+  border-style: solid;
+  transform: rotate(-1deg) scale(1.02);
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(12deg); }
+  50% { transform: translateY(-20px) rotate(8deg); }
+}
+
+@keyframes float-delayed {
+  0%, 100% { transform: translateY(0) rotate(-8deg); }
+  50% { transform: translateY(-15px) rotate(-12deg); }
+}
+
+@keyframes pop-in {
+  0% { transform: scale(0.8); opacity: 0; }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-1deg); }
+  50% { transform: rotate(1deg); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-delayed 7s ease-in-out infinite;
+}
+
+.animate-pop-in {
+  animation: pop-in 0.4s ease-out;
+}
+
+.animate-shake {
+  animation: shake 0.4s ease-in-out;
+}
+
+.wiggle-text {
+  display: inline-block;
+  animation: wiggle 3s ease-in-out infinite;
+}
+
+.animation-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animation-delay-400 {
+  animation-delay: 400ms;
+}
+
+/* Gallery item */
+.gallery-item {
+  animation: pop-in 0.3s ease-out backwards;
+}
+
+.gallery-item:hover {
+  transform: rotate(-1deg) scale(1.02);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--sky);
+  border: 2px solid var(--charcoal);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--coral);
+}
+
+/* Line clamp utility */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .paper-card::before {
+    width: 30px;
+    height: 12px;
+    top: -6px;
+    left: 15px;
+  }
+
+  .scrapbook-frame {
+    padding: 8px;
+  }
+
+  .scrapbook-frame::before,
+  .scrapbook-frame::after {
+    width: 24px;
+    height: 10px;
+  }
+
+  .crayon-input {
+    font-size: 1rem;
+    padding: 10px 14px;
+  }
+
+  .crayon-button {
+    padding: 12px 20px;
+    font-size: 1rem;
+  }
+
+  .suggestion-chip {
+    font-size: 0.8rem;
+    padding: 5px 12px;
+  }
+}
